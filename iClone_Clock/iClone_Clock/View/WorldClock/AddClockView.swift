@@ -9,10 +9,40 @@ import SwiftUI
 
 struct AddClockView: View {
     
+    @StateObject private var model = WorldClockModel()
     @Binding var addClock: Bool
     
     var body: some View {
-        Text("AddClock")
+        List {
+            ForEach(TimeZone.knownTimeZoneIdentifiers, id: \.self) { timezone in
+                Button {
+                    addClock = false
+                } label: {
+                    Text(timezone)
+                        .foregroundColor(.primary)
+                }
+            }
+        }
+        .padding(.top, -8)
+        .safeAreaInset(edge: .top) {
+            VStack {
+                Text("도시 선택")
+                    .padding(.top, 16)
+                    .font(.callout)
+                SearchBarView(searchText: $model.searchText) {
+                    addClock = false
+                }
+            }
+            .padding(.bottom, 12)
+            .background {
+                VStack(spacing: 0) {
+                    Rectangle()
+                        .foregroundStyle(.ultraThinMaterial)
+                        .ignoresSafeArea()
+                    Divider()
+                }
+            }
+        }
     }
 }
 
