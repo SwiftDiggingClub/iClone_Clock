@@ -8,8 +8,34 @@
 import SwiftUI
 
 struct WorldClockView: View {
+    
+    @State private var addClock = false
+    
     var body: some View {
-        Text("Here is World Clock")
+        NavigationStack {
+            List {
+                WorldClockListView()
+            }
+            .listStyle(.inset)
+            .navigationTitle("세계 시계")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                        .fontWeight(.medium)
+                }
+                ToolbarItem {
+                    Button {
+                        addClock = true
+                    } label: {
+                        Image(systemName: "plus")
+                            .fontWeight(.medium)
+                    }
+                }
+            }
+            .sheet(isPresented: $addClock) {
+                AddClockView(addClock: $addClock)
+            }
+        }
     }
 }
 

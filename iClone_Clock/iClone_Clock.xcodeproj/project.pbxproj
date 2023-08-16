@@ -16,6 +16,8 @@
 		2980792D2A8CE00300D37113 /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980792C2A8CE00300D37113 /* AlarmView.swift */; };
 		2980792F2A8CE00C00D37113 /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980792E2A8CE00C00D37113 /* StopwatchView.swift */; };
 		298079312A8CE01600D37113 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079302A8CE01600D37113 /* TimerView.swift */; };
+		298079342A8CE8D700D37113 /* WorldClockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079332A8CE8D700D37113 /* WorldClockListView.swift */; };
+		298079362A8CEACB00D37113 /* AddClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079352A8CEACB00D37113 /* AddClockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		2980792C2A8CE00300D37113 /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		2980792E2A8CE00C00D37113 /* StopwatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
 		298079302A8CE01600D37113 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		298079332A8CE8D700D37113 /* WorldClockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockListView.swift; sourceTree = "<group>"; };
+		298079352A8CEACB00D37113 /* AddClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				2980792A2A8CDFFB00D37113 /* WorldClockView.swift */,
+				298079332A8CE8D700D37113 /* WorldClockListView.swift */,
+				298079352A8CEACB00D37113 /* AddClockView.swift */,
 			);
 			path = WorldClock;
 			sourceTree = "<group>";
@@ -200,6 +206,8 @@
 				2980792D2A8CE00300D37113 /* AlarmView.swift in Sources */,
 				2980792B2A8CDFFB00D37113 /* WorldClockView.swift in Sources */,
 				298079162A8CAE7B00D37113 /* iClone_ClockApp.swift in Sources */,
+				298079342A8CE8D700D37113 /* WorldClockListView.swift in Sources */,
+				298079362A8CEACB00D37113 /* AddClockView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
