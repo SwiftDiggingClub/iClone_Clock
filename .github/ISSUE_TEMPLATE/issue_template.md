@@ -1,7 +1,7 @@
 ---
 name: 기본 이슈 템플릿
 about: 아래에 양식에 맞춰서 작성해 주세요
-title: "feat: 새로운 기능 추가"
+title: "[Feat] 새로운 기능 추가"
 labels: ''
 assignees: ''
 ---
