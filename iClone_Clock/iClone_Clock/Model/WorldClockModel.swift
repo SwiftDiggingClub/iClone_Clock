@@ -45,7 +45,7 @@ class WorldClockModel: ObservableObject {
     
     private func getLocationInfo(identifier: String) -> LocationInfo {
         let cityInEnglish = getCity(identifier: identifier)
-        return locationInfoDictionary[identifier] ?? LocationInfo(cityInEnglish: cityInEnglish, cityInKorean: identifier, countryInEnglish: identifier, countryInKorean: identifier)
+        return locationInfoDictionary[identifier] ?? LocationInfo(cityInEnglish: cityInEnglish, cityInKorean: "n/a", countryInEnglish: identifier, countryInKorean: "n/a")
     }
     
     

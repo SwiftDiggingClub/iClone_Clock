@@ -70,7 +70,7 @@ struct WorldClockListView: View {
     }
     
     private func formatTimeDifference(_ hours: Double) -> String {
-        let isPositive = hours > 0
+        let isPositive = hours >= 0
         let integerHours = Int(abs(hours))
         let minutes = Int((abs(hours) - Double(integerHours)) * 60)
         
@@ -86,7 +86,7 @@ struct WorldClockListView: View {
             formattedTime += " \(minutes)분"
         }
         
-        return formattedTime.isEmpty ? "0시간" : formattedTime
+        return formattedTime.isEmpty || formattedTime == "+" ? "+0시간" : formattedTime
     }
 
     
