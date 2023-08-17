@@ -9,20 +9,44 @@ import SwiftUI
 
 struct AddClockView: View {
     
-    @StateObject private var model = WorldClockModel()
+    @ObservedObject var model: WorldClockModel
     @Binding var addClock: Bool
+    
+    private var filteredTimezoneDatas: [TimezoneData] {
+        if model.searchText.isEmpty {
+            return model.timezoneDatas
+        } else {
+            let lowercaseSearchText = model.searchText.lowercased()
+            return model.timezoneDatas.filter { timezone in
+                let cityInKorean = timezone.locationInfo.cityInKorean.lowercased()
+                let countryInKorean = timezone.locationInfo.countryInKorean.lowercased()
+                let cityInEnglish = timezone.locationInfo.cityInEnglish.lowercased()
+                let countryInEnglish = timezone.locationInfo.countryInEnglish.lowercased()
+                
+                return cityInKorean.contains(lowercaseSearchText) ||
+                countryInKorean.contains(lowercaseSearchText) || cityInEnglish.contains(lowercaseSearchText) || countryInEnglish.contains(lowercaseSearchText)
+            }
+        }
+    }
     
     var body: some View {
         List {
-            ForEach(TimeZone.knownTimeZoneIdentifiers, id: \.self) { timezone in
+            ForEach(filteredTimezoneDatas.sorted(by: { $0.locationInfo.cityInKorean < $1.locationInfo.cityInKorean })) { timezone in
                 Button {
+                    if model.selectedTimezoneDatas.firstIndex(where: { $0.id == timezone.id }) == nil {
+                        model.selectedTimezoneDatas.append(timezone)
+                    }
                     addClock = false
                 } label: {
-                    Text(timezone)
-                        .foregroundColor(.primary)
+                    HStack(spacing: 0) {
+                        Text(timezone.locationInfo.cityInKorean + ", ")
+                        Text(timezone.locationInfo.countryInKorean)
+                    }
+                    .foregroundColor(.primary)
                 }
             }
         }
+        .listStyle(.inset)
         .padding(.top, -8)
         .safeAreaInset(edge: .top) {
             VStack {
@@ -48,6 +72,6 @@ struct AddClockView: View {
 
 struct AddClockView_Previews: PreviewProvider {
     static var previews: some View {
-        AddClockView(addClock: .constant(false))
+        AddClockView(model: WorldClockModel(), addClock: .constant(false))
     }
 }

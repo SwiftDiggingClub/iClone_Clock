@@ -9,33 +9,68 @@ import SwiftUI
 
 struct WorldClockView: View {
     
+    @StateObject private var model = WorldClockModel()
+    @State var isEditing = false
     @State private var addClock = false
+    @State private var isTimeAppear = true
     
+    let time = TimeZone(identifier: "Asia/Seoul")
+            
     var body: some View {
         NavigationStack {
             List {
-                WorldClockListView()
+                ForEach(model.selectedTimezoneDatas) { timezone in
+                    WorldClockListView(timezone: timezone, isTimeAppear: $isTimeAppear)
+                }
+                .onDelete(perform: delete)
+                .onMove(perform: move)
             }
             .listStyle(.inset)
             .navigationTitle("세계 시계")
+            .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive))
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
-                        .fontWeight(.medium)
+                    editButton
                 }
                 ToolbarItem {
-                    Button {
-                        addClock = true
-                    } label: {
-                        Image(systemName: "plus")
-                            .fontWeight(.medium)
-                    }
+                    addWorldClockButton
                 }
             }
             .sheet(isPresented: $addClock) {
-                AddClockView(addClock: $addClock)
+                AddClockView(model: model, addClock: $addClock)
             }
         }
+    }
+    
+    @ViewBuilder
+    private var addWorldClockButton: some View {
+        Button {
+            addClock = true
+        } label: {
+            Image(systemName: "plus")
+                .fontWeight(.medium)
+        }
+    }
+    
+    @ViewBuilder
+    private var editButton: some View {
+        Button {
+            withAnimation() {
+                isTimeAppear.toggle()
+                isEditing.toggle()
+            }
+        } label: {
+            Text(isEditing ? "완료" : "편집")
+            .fontWeight(.medium)
+        }
+    }
+    
+    private func delete(indexSet: IndexSet) {
+        model.selectedTimezoneDatas.remove(atOffsets: indexSet)
+    }
+    
+    private func move(indices: IndexSet, newOffset: Int) {
+        model.selectedTimezoneDatas.move(fromOffsets: indices, toOffset: newOffset)
     }
 }
 
