@@ -439,7 +439,18 @@ let locationInfoDictionary: [String: LocationInfo] = [
     "Pacific/Tongatapu": LocationInfo(cityInEnglish: "Nuku'alofa", cityInKorean: "누쿠알로파", countryInEnglish: "Tonga", countryInKorean: "통가"),
     "Pacific/Truk": LocationInfo(cityInEnglish: "Chuuk", cityInKorean: "추크", countryInEnglish: "Micronesia", countryInKorean: "미크로네시아"),
     "Pacific/Wake": LocationInfo(cityInEnglish: "Wake Island", cityInKorean: "웨이크 홀", countryInEnglish: "United States", countryInKorean: "미국"),
-    "Pacific/Wallis": LocationInfo(cityInEnglish: "Mata-Utu", cityInKorean: "마타우투", countryInEnglish: "Wallis and Futuna", countryInKorean: "왈리스 퓌튀나")
+    "Pacific/Wallis": LocationInfo(cityInEnglish: "Mata-Utu", cityInKorean: "마타우투", countryInEnglish: "Wallis and Futuna", countryInKorean: "왈리스 퓌튀나"),
+    "America/Ciudad_Juarez": LocationInfo(cityInEnglish: "Ciudad Juarez", cityInKorean: "시우다드 후아레즈", countryInEnglish: "United States", countryInKorean: "미국"),
+    "America/Nuuk": LocationInfo(cityInEnglish: "Nuuk", cityInKorean: "누운", countryInEnglish: "Greenland", countryInKorean: "그린란드"),
+    "America/Punta_Arenas": LocationInfo(cityInEnglish: "Punta Arenas", cityInKorean: "푼타 아레나스", countryInEnglish: "Chile", countryInKorean: "칠레"),
+    "Asia/Atyrau": LocationInfo(cityInEnglish: "Atyrau", cityInKorean: "아티라우", countryInEnglish: "Kazakhstan", countryInKorean: "카자흐스탄"),
+    "Asia/Calcutta": LocationInfo(cityInEnglish: "Calcutta", cityInKorean: "콜카타", countryInEnglish: "India", countryInKorean: "인도"),
+    "Asia/Famagusta": LocationInfo(cityInEnglish: "Famagusta", cityInKorean: "파마구스타", countryInEnglish: "Cyprus", countryInKorean: "키프로스"),
+    "Asia/Qostanay": LocationInfo(cityInEnglish: "Qostanay", cityInKorean: "코스타나이", countryInEnglish: "Kazakhstan", countryInKorean: "카자흐스탄"),
+    "Asia/Yangon": LocationInfo(cityInEnglish: "Yangon", cityInKorean: "양곤", countryInEnglish: "Myanmar", countryInKorean: "미얀마"),
+    "Europe/Kyiv": LocationInfo(cityInEnglish: "Kyiv", cityInKorean: "키예프", countryInEnglish: "Ukraine", countryInKorean: "우크라이나"),
+    "Europe/Saratov": LocationInfo(cityInEnglish: "Saratov", cityInKorean: "사라토프", countryInEnglish: "Russia", countryInKorean: "러시아"),
+    "Pacific/Kanton": LocationInfo(cityInEnglish: "Kanton", cityInKorean: "칸턴", countryInEnglish: "Kiribati", countryInKorean: "키리바시")
 ]
 
 
