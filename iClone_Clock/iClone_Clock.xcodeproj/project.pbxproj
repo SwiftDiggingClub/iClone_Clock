@@ -13,6 +13,9 @@
 		2980791D2A8CAE7D00D37113 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */; };
 		959862772A93AA180047E1D5 /* WorldTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959862762A93AA180047E1D5 /* WorldTimeView.swift */; };
 		959862792A93AA360047E1D5 /* WorldTimerObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959862782A93AA360047E1D5 /* WorldTimerObservable.swift */; };
+		9598627B2A93AB040047E1D5 /* AlermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598627A2A93AB040047E1D5 /* AlermView.swift */; };
+		9598627D2A93AB150047E1D5 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598627C2A93AB150047E1D5 /* StopWatchView.swift */; };
+		9598627F2A93AB250047E1D5 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598627E2A93AB250047E1D5 /* TimerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +26,9 @@
 		2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		959862762A93AA180047E1D5 /* WorldTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeView.swift; sourceTree = "<group>"; };
 		959862782A93AA360047E1D5 /* WorldTimerObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimerObservable.swift; sourceTree = "<group>"; };
+		9598627A2A93AB040047E1D5 /* AlermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlermView.swift; sourceTree = "<group>"; };
+		9598627C2A93AB150047E1D5 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
+		9598627E2A93AB250047E1D5 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,9 @@
 			isa = PBXGroup;
 			children = (
 				959862762A93AA180047E1D5 /* WorldTimeView.swift */,
+				9598627A2A93AB040047E1D5 /* AlermView.swift */,
+				9598627C2A93AB150047E1D5 /* StopWatchView.swift */,
+				9598627E2A93AB250047E1D5 /* TimerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +168,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9598627F2A93AB250047E1D5 /* TimerView.swift in Sources */,
+				9598627D2A93AB150047E1D5 /* StopWatchView.swift in Sources */,
+				9598627B2A93AB040047E1D5 /* AlermView.swift in Sources */,
 				298079182A8CAE7B00D37113 /* ContentView.swift in Sources */,
 				298079162A8CAE7B00D37113 /* iClone_ClockApp.swift in Sources */,
 				959862772A93AA180047E1D5 /* WorldTimeView.swift in Sources */,
