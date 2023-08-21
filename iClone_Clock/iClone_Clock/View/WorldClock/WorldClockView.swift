@@ -10,6 +10,7 @@ import SwiftUI
 struct WorldClockView: View {
     
     @StateObject private var model = WorldClockModel()
+    
     @State var isEditing = false
     @State private var addClock = false
     @State private var isTimeAppear = true
@@ -24,6 +25,7 @@ struct WorldClockView: View {
                 }
                 .onDelete(perform: delete)
                 .onMove(perform: move)
+                .listRowBackground(EmptyView())
             }
             .listStyle(.inset)
             .navigationTitle("세계 시계")
@@ -67,10 +69,12 @@ struct WorldClockView: View {
     
     private func delete(indexSet: IndexSet) {
         model.selectedTimezoneDatas.remove(atOffsets: indexSet)
+        model.saveData()
     }
     
     private func move(indices: IndexSet, newOffset: Int) {
         model.selectedTimezoneDatas.move(fromOffsets: indices, toOffset: newOffset)
+        model.saveData()
     }
 }
 

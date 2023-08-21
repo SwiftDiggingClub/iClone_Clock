@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct LocationInfo {
+struct LocationInfo: Codable {
     let cityInEnglish: String
     let cityInKorean: String
     let countryInEnglish: String
     let countryInKorean: String
 }
 
-struct TimezoneData: Identifiable {
-    let id = UUID()
+struct TimezoneData: Identifiable, Codable {
+    var id = UUID()
     let identifier: String
     let locationInfo: LocationInfo
 }
@@ -28,6 +28,7 @@ class WorldClockModel: ObservableObject {
     
     init() {
         addTimezoneData()
+        loadData()
     }
     
     private func getCity(identifier: String) -> String {
@@ -52,6 +53,39 @@ class WorldClockModel: ObservableObject {
     private func addTimezoneData() {
         for identifier in TimeZone.knownTimeZoneIdentifiers {
             timezoneDatas.append(TimezoneData(identifier: identifier, locationInfo: getLocationInfo(identifier: identifier)))
+        }
+    }
+}
+
+extension WorldClockModel {
+    func groupedTimezones(timezones: [TimezoneData]) -> [String: [TimezoneData]] {
+        let groupedTimezones = Dictionary(grouping: timezones) { timezone in
+            return getFirstConsonant(word: timezone.locationInfo.cityInKorean)
+        }
+        
+        var sortedGroupedTimezones: [String: [TimezoneData]] = [:]
+        
+        for (firstConsonant, timezones) in groupedTimezones {
+            sortedGroupedTimezones[firstConsonant] = timezones.sorted(by: { $0.locationInfo.cityInKorean > $1.locationInfo.cityInKorean })
+        }
+        
+        return sortedGroupedTimezones
+    }
+}
+
+extension WorldClockModel {
+    func saveData() {
+        if let encodedData = try? JSONEncoder().encode(selectedTimezoneDatas) {
+            UserDefaults.standard.set(encodedData, forKey: "selectedTimezone")
+            loadData()
+        }
+    }
+    
+    func loadData() {
+        if let data = UserDefaults.standard.data(forKey: "selectedTimezone") {
+            if let decodedData = try? JSONDecoder().decode([TimezoneData].self, from: data) {
+                selectedTimezoneDatas = decodedData
+            }
         }
     }
 }
