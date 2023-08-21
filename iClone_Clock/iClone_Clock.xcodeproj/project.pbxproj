@@ -11,6 +11,8 @@
 		298079182A8CAE7B00D37113 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079172A8CAE7B00D37113 /* ContentView.swift */; };
 		2980791A2A8CAE7D00D37113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 298079192A8CAE7D00D37113 /* Assets.xcassets */; };
 		2980791D2A8CAE7D00D37113 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */; };
+		959862772A93AA180047E1D5 /* WorldTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959862762A93AA180047E1D5 /* WorldTimeView.swift */; };
+		959862792A93AA360047E1D5 /* WorldTimerObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959862782A93AA360047E1D5 /* WorldTimerObservable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		298079172A8CAE7B00D37113 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		298079192A8CAE7D00D37113 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		959862762A93AA180047E1D5 /* WorldTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeView.swift; sourceTree = "<group>"; };
+		959862782A93AA360047E1D5 /* WorldTimerObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimerObservable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 		298079142A8CAE7B00D37113 /* iClone_Clock */ = {
 			isa = PBXGroup;
 			children = (
+				959862752A93A9DC0047E1D5 /* Observable */,
+				959862742A93A9D70047E1D5 /* View */,
 				298079152A8CAE7B00D37113 /* iClone_ClockApp.swift */,
 				298079172A8CAE7B00D37113 /* ContentView.swift */,
 				298079192A8CAE7D00D37113 /* Assets.xcassets */,
@@ -65,6 +71,22 @@
 				2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		959862742A93A9D70047E1D5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				959862762A93AA180047E1D5 /* WorldTimeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		959862752A93A9DC0047E1D5 /* Observable */ = {
+			isa = PBXGroup;
+			children = (
+				959862782A93AA360047E1D5 /* WorldTimerObservable.swift */,
+			);
+			path = Observable;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +161,8 @@
 			files = (
 				298079182A8CAE7B00D37113 /* ContentView.swift in Sources */,
 				298079162A8CAE7B00D37113 /* iClone_ClockApp.swift in Sources */,
+				959862772A93AA180047E1D5 /* WorldTimeView.swift in Sources */,
+				959862792A93AA360047E1D5 /* WorldTimerObservable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
