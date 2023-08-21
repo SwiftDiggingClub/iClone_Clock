@@ -21,6 +21,7 @@
 		298079412A8D100600D37113 /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079402A8D100600D37113 /* WorldClockModel.swift */; };
 		298079432A8D110900D37113 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079422A8D110900D37113 /* SearchBarView.swift */; };
 		2980794B2A8E212F00D37113 /* locationInfoDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2980794A2A8E212F00D37113 /* locationInfoDictionary.swift */; };
+		29AEDE1C2A93498F00ABB78B /* GetFirstConsonant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AEDE1B2A93498F00ABB78B /* GetFirstConsonant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		298079402A8D100600D37113 /* WorldClockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
 		298079422A8D110900D37113 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		2980794A2A8E212F00D37113 /* locationInfoDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = locationInfoDictionary.swift; sourceTree = "<group>"; };
+		29AEDE1B2A93498F00ABB78B /* GetFirstConsonant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFirstConsonant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 				298079172A8CAE7B00D37113 /* ContentView.swift */,
 				298079232A8CDE3400D37113 /* View */,
 				2980793B2A8D00E200D37113 /* Model */,
+				29AEDE192A9348E400ABB78B /* Component */,
 				298079192A8CAE7D00D37113 /* Assets.xcassets */,
 				2980791B2A8CAE7D00D37113 /* Preview Content */,
 			);
@@ -143,6 +146,14 @@
 				2980794A2A8E212F00D37113 /* locationInfoDictionary.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		29AEDE192A9348E400ABB78B /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				29AEDE1B2A93498F00ABB78B /* GetFirstConsonant.swift */,
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29AEDE1C2A93498F00ABB78B /* GetFirstConsonant.swift in Sources */,
 				298079312A8CE01600D37113 /* TimerView.swift in Sources */,
 				298079182A8CAE7B00D37113 /* ContentView.swift in Sources */,
 				298079292A8CDFE700D37113 /* MainView.swift in Sources */,

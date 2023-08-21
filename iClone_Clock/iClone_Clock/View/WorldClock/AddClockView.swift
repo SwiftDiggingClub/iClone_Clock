@@ -12,60 +12,77 @@ struct AddClockView: View {
     @ObservedObject var model: WorldClockModel
     @Binding var addClock: Bool
     
-    private var filteredTimezoneDatas: [TimezoneData] {
-        if model.searchText.isEmpty {
-            return model.timezoneDatas
-        } else {
-            let lowercaseSearchText = model.searchText.lowercased()
-            return model.timezoneDatas.filter { timezone in
-                let cityInKorean = timezone.locationInfo.cityInKorean.lowercased()
-                let countryInKorean = timezone.locationInfo.countryInKorean.lowercased()
-                let cityInEnglish = timezone.locationInfo.cityInEnglish.lowercased()
-                let countryInEnglish = timezone.locationInfo.countryInEnglish.lowercased()
-                
-                return cityInKorean.contains(lowercaseSearchText) ||
-                countryInKorean.contains(lowercaseSearchText) || cityInEnglish.contains(lowercaseSearchText) || countryInEnglish.contains(lowercaseSearchText)
+    private let hangulConsonant = ["ㄱ","ㄴ","ㄷ","ㄹ","ㅁ","ㅂ","ㅅ","ㅆ","ㅇ","ㅈ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+    
+    var body: some View {
+        NavigationStack {
+            ScrollViewReader { proxy in
+                ZStack {
+                    List {
+                        ForEach(model.groupedTimezones(timezones: filteredTimezones()).sorted(by: { $0.key < $1.key }), id: \.key) { header, timezones in
+                            Section(header: Text(header).id(header)) {
+                                ForEach(timezones, id: \.id) { timezone in
+                                    Button {
+                                        if !model.selectedTimezoneDatas.contains(where: { $0.id == timezone.id }) {
+                                            model.selectedTimezoneDatas.append(timezone)
+                                            model.saveData()
+                                        }
+                                        addClock = false
+                                    } label: {
+                                        HStack {
+                                            Text("\(timezone.locationInfo.cityInKorean), \(timezone.locationInfo.countryInKorean)")
+                                        }
+                                        .foregroundColor(.primary)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .overlay(alignment: .trailing) {
+                        if model.searchText.isEmpty {
+                            VStack {
+                                ForEach(hangulConsonant, id: \.self) { header in
+                                    Button(header) {
+                                        withAnimation(.spring()) {
+                                            proxy.scrollTo(header, anchor: .top)
+                                        }
+                                    }
+                                    .padding(.trailing, 5)
+                                    .font(.footnote)
+                                }
+                            }
+                        }
+                    }
+                    
+                    if filteredTimezones().isEmpty {
+                        VStack {
+                            Text("검색결과가 없습니다")
+                        }
+                    }
+                }
             }
+            .listStyle(.inset)
+            .navigationTitle("")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("도시 검색")
+                        .font(.footnote)
+                }
+            }
+            .searchable(text: $model.searchText, placement: .navigationBarDrawer(displayMode: .always))
         }
     }
     
-    var body: some View {
-        List {
-            ForEach(filteredTimezoneDatas.sorted(by: { $0.locationInfo.cityInKorean < $1.locationInfo.cityInKorean })) { timezone in
-                Button {
-                    if model.selectedTimezoneDatas.firstIndex(where: { $0.id == timezone.id }) == nil {
-                        model.selectedTimezoneDatas.append(timezone)
-                    }
-                    addClock = false
-                } label: {
-                    HStack(spacing: 0) {
-                        Text(timezone.locationInfo.cityInKorean + ", ")
-                        Text(timezone.locationInfo.countryInKorean)
-                    }
-                    .foregroundColor(.primary)
-                }
-            }
-        }
-        .listStyle(.inset)
-        .padding(.top, -8)
-        .safeAreaInset(edge: .top) {
-            VStack {
-                Text("도시 선택")
-                    .padding(.top, 16)
-                    .font(.callout)
-                SearchBarView(searchText: $model.searchText) {
-                    addClock = false
-                }
-            }
-            .padding(.bottom, 12)
-            .background {
-                VStack(spacing: 0) {
-                    Rectangle()
-                        .foregroundStyle(.ultraThinMaterial)
-                        .ignoresSafeArea()
-                    Divider()
-                }
-            }
+    private func filteredTimezones() -> [TimezoneData] {
+        let lowercaseSearchText = model.searchText.lowercased()
+        
+        return model.timezoneDatas.filter { timezone in
+            let location = timezone.locationInfo
+            
+            return [location.cityInKorean, location.countryInKorean, location.cityInEnglish, location.countryInEnglish]
+                .map { $0.lowercased() }
+                .contains { $0.contains(lowercaseSearchText) } || model.searchText.isEmpty
         }
     }
 }
