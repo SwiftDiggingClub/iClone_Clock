@@ -11,7 +11,8 @@ struct AlermView: View {
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
-            Text("world time")
+            Text("Alerm")
+                .font(.system(size: 60, weight: .black))
         }
         .foregroundColor(.green)
     }

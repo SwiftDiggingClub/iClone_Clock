@@ -11,7 +11,8 @@ struct WorldTimeView: View {
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
-            Text("world time")
+            Text("World Time")
+                .font(.system(size: 60, weight: .black))
         }
         .foregroundColor(.green)
     }

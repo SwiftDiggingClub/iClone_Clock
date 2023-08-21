@@ -9,7 +9,12 @@ import SwiftUI
 
 struct TimerView: View {
     var body: some View {
-        Text("Timer")
+        ZStack {
+            Color.black.edgesIgnoringSafeArea(.all)
+            Text("Timer")
+                .font(.system(size: 60, weight: .black))
+        }
+        .foregroundColor(.green)
     }
 }
 
