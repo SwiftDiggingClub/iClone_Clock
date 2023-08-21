@@ -31,7 +31,7 @@ struct WorldClockListView: View {
             if isTimeAppear {
                 Text(getTargetTime(identifier: timezone.identifier))
                     .monospacedDigit()
-                    .font(.system(size: 40))
+                    .font(.system(size: 50))
             }
         }
         .fontDesign(.rounded)
@@ -89,7 +89,6 @@ struct WorldClockListView: View {
         return formattedTime.isEmpty || formattedTime == "+" ? "+0시간" : formattedTime
     }
 
-    
     private func getDayDifference(identifier: String) -> String {
         let targetTimezone = TimeZone(identifier: "Asia/Seoul")
         let dateFormatter = DateFormatter()
@@ -101,11 +100,10 @@ struct WorldClockListView: View {
         
         if currentHour + hourDifference < 0 {
             return "어제"
-        } else if currentHour + hourDifference > 24 {
+        } else if currentHour + hourDifference >= 24 {
             return "내일"
         } else {
             return "오늘"
         }
     }
-
 }
