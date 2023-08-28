@@ -9,12 +9,12 @@ import SwiftUI
 
 struct WorldTimeView: View {
     @ObservedObject private var worldTimerObservable = WorldTimerObservable()
+    @State private var isAddMode = false
+    @State private var editMode = EditMode.inactive
+
     var body: some View {
-        ZStack {
-            Color.black.edgesIgnoringSafeArea(.all)
+        NavigationStack {
             VStack {
-                Text("World Time")
-                    .font(.system(size: 60, weight: .black))
                 List {
                     ForEach(worldTimerObservable.worldCityTimeList, id: \.self) { cityTime in
                         HStack {
@@ -23,20 +23,43 @@ struct WorldTimeView: View {
                             Spacer()
                             worldTimerObservable.getFormattedTime(cityTime)
                         }
-                        .listRowBackground(Color.black)
                         .padding(.vertical, 10)
                     }
                     .onDelete(perform: worldTimerObservable.removeItem)
                 }
                 .listStyle(.grouped)
-                .background(.black)
-                .scrollContentBackground(.hidden)
             }
-            
+            .navigationBarItems(leading: EditButton(), trailing: TrailingButton)
         }
+        .tint(.green)
         .foregroundColor(.green)
+        .scrollContentBackground(.hidden)
+        .environment(\.editMode, $editMode)
+        .sheet(isPresented: $isAddMode) {
+            List {
+                ForEach(worldTimerObservable.TimeZoneCityList) { time in
+                    Button {
+                        worldTimerObservable.worldCityTimeList.append(time)
+                        isAddMode = false
+                    } label: {
+                        Text(time.city)
+                    }
+                }
+            }
+            .listStyle(.plain)
+        }
+        .onAppear {
+            worldTimerObservable.getTimeZoneCityList()
+        }
     }
     
+    private var TrailingButton: some View {
+        Button {
+            isAddMode = true
+        } label: {
+            Image(systemName: "plus")
+        }
+    }
 }
 
 struct WorldTimeView_Previews: PreviewProvider {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct WorldTime: Hashable {
+struct WorldTime: Hashable, Identifiable {
     let id = UUID().uuidString
     var city: String
     var timezoneOffset: Int
