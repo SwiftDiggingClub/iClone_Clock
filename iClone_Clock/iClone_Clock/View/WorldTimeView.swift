@@ -8,14 +8,35 @@
 import SwiftUI
 
 struct WorldTimeView: View {
+    @ObservedObject private var worldTimerObservable = WorldTimerObservable()
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
-            Text("World Time")
-                .font(.system(size: 60, weight: .black))
+            VStack {
+                Text("World Time")
+                    .font(.system(size: 60, weight: .black))
+                List {
+                    ForEach(worldTimerObservable.worldCityTimeList, id: \.self) { cityTime in
+                        HStack {
+                            Text(cityTime.city)
+                                .font(.system(size: 30, weight: .black))
+                            Spacer()
+                            worldTimerObservable.getFormattedTime(cityTime)
+                        }
+                        .listRowBackground(Color.black)
+                        .padding(.vertical, 10)
+                    }
+                    .onDelete(perform: worldTimerObservable.removeItem)
+                }
+                .listStyle(.grouped)
+                .background(.black)
+                .scrollContentBackground(.hidden)
+            }
+            
         }
         .foregroundColor(.green)
     }
+    
 }
 
 struct WorldTimeView_Previews: PreviewProvider {
