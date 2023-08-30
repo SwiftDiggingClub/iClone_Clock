@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TimerView.swift
 //  iClone_Clock
 //
 //  Created by hyunjun on 2023/08/16.
@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TimerView: View {
     var body: some View {
-        MainView()
+        Text("Here is Timer")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        TimerView()
     }
 }
