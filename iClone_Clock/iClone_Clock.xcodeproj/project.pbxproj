@@ -11,6 +11,12 @@
 		298079182A8CAE7B00D37113 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079172A8CAE7B00D37113 /* ContentView.swift */; };
 		2980791A2A8CAE7D00D37113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 298079192A8CAE7D00D37113 /* Assets.xcassets */; };
 		2980791D2A8CAE7D00D37113 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */; };
+		DE3019342A9EC29300901B8A /* WorldClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3019332A9EC29300901B8A /* WorldClockView.swift */; };
+		DE3019362A9EC2A900901B8A /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3019352A9EC2A900901B8A /* AlarmView.swift */; };
+		DE3019392A9EC2F800901B8A /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3019382A9EC2F800901B8A /* StopWatchView.swift */; };
+		DE30193B2A9EC30700901B8A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30193A2A9EC30700901B8A /* TimerView.swift */; };
+		DE30193E2A9F0B7C00901B8A /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30193D2A9F0B7C00901B8A /* WorldClockModel.swift */; };
+		DE3019402AA17CE000901B8A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30193F2AA17CE000901B8A /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +25,12 @@
 		298079172A8CAE7B00D37113 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		298079192A8CAE7D00D37113 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DE3019332A9EC29300901B8A /* WorldClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockView.swift; sourceTree = "<group>"; };
+		DE3019352A9EC2A900901B8A /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
+		DE3019382A9EC2F800901B8A /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
+		DE30193A2A9EC30700901B8A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		DE30193D2A9F0B7C00901B8A /* WorldClockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
+		DE30193F2AA17CE000901B8A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +65,9 @@
 			children = (
 				298079152A8CAE7B00D37113 /* iClone_ClockApp.swift */,
 				298079172A8CAE7B00D37113 /* ContentView.swift */,
+				DE30193F2AA17CE000901B8A /* MainView.swift */,
+				DE30193C2A9EF4DC00901B8A /* Model */,
+				DE3019372A9EC2D400901B8A /* View */,
 				298079192A8CAE7D00D37113 /* Assets.xcassets */,
 				2980791B2A8CAE7D00D37113 /* Preview Content */,
 			);
@@ -65,6 +80,25 @@
 				2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DE3019372A9EC2D400901B8A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE3019332A9EC29300901B8A /* WorldClockView.swift */,
+				DE3019352A9EC2A900901B8A /* AlarmView.swift */,
+				DE3019382A9EC2F800901B8A /* StopWatchView.swift */,
+				DE30193A2A9EC30700901B8A /* TimerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE30193C2A9EF4DC00901B8A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DE30193D2A9F0B7C00901B8A /* WorldClockModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +171,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE30193E2A9F0B7C00901B8A /* WorldClockModel.swift in Sources */,
+				DE3019402AA17CE000901B8A /* MainView.swift in Sources */,
+				DE30193B2A9EC30700901B8A /* TimerView.swift in Sources */,
 				298079182A8CAE7B00D37113 /* ContentView.swift in Sources */,
+				DE3019392A9EC2F800901B8A /* StopWatchView.swift in Sources */,
+				DE3019342A9EC29300901B8A /* WorldClockView.swift in Sources */,
+				DE3019362A9EC2A900901B8A /* AlarmView.swift in Sources */,
 				298079162A8CAE7B00D37113 /* iClone_ClockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,7 +11,8 @@ import SwiftUI
 struct iClone_ClockApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+            MainView()
         }
     }
 }

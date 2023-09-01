@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  MainView.swift
 //  iClone_Clock
 //
-//  Created by hyunjun on 2023/08/16.
+//  Created by qwd on 2023/09/01.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainView: View {
     var body: some View {
         ZStack{
             Color.black.ignoresSafeArea(.all)
@@ -39,14 +39,14 @@ struct ContentView: View {
 }
 
 
-struct ContentView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
 
 //MARK: - 다크모드
-struct brightMode {
+struct BrightMode {
     static func myBackgroundColor(forScheme scheme: ColorScheme) -> Color {
         let lightColor = Color.white
         let darkColor = Color.black
@@ -58,3 +58,4 @@ struct brightMode {
         }
     }
 }
+
