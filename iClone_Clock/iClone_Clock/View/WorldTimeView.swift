@@ -16,12 +16,13 @@ struct WorldTimeView: View {
         NavigationStack {
             VStack {
                 List {
-                    ForEach(worldTimerObservable.worldCityTimeList, id: \.self) { cityTime in
+                    ForEach(worldTimerObservable.timeZoneCityList, id: \.id) { city in
                         HStack {
-                            Text(cityTime.city)
+                            Text(city.city)
                                 .font(.system(size: 30, weight: .black))
                             Spacer()
-                            worldTimerObservable.getFormattedTime(cityTime)
+                            Text(city.meridiem ?? "")
+                            Text(city.timeMinute ?? "")
                         }
                         .padding(.vertical, 10)
                     }
@@ -37,9 +38,9 @@ struct WorldTimeView: View {
         .environment(\.editMode, $editMode)
         .sheet(isPresented: $isAddMode) {
             List {
-                ForEach(worldTimerObservable.TimeZoneCityList) { time in
+                ForEach(worldTimerObservable.allCityList) { time in
                     Button {
-                        worldTimerObservable.worldCityTimeList.append(time)
+//                        worldTimerObservable.worldCityTimeList.append(time)
                         isAddMode = false
                     } label: {
                         Text(time.city)
@@ -48,10 +49,8 @@ struct WorldTimeView: View {
             }
             .listStyle(.plain)
         }
-        .onAppear {
-            worldTimerObservable.getTimeZoneCityList()
-        }
     }
+    
     
     private var TrailingButton: some View {
         Button {
