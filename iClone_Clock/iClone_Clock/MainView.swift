@@ -13,25 +13,13 @@ struct MainView: View {
             Color.black.ignoresSafeArea(.all)
             TabView{
                 WorldClockView()
-                    .tabItem {
-                        Image(systemName: "globe")
-                        Text("세계시계")
-                    }
+                    .tabItem { Label("세계시계", systemImage: "globe")}
                 AlarmView()
-                    .tabItem {
-                        Image(systemName: "alarm")
-                        Text("알람")
-                    }
+                    .tabItem { Label("알람",systemImage: "alarm")}
                 StopWatchView()
-                    .tabItem {
-                        Image(systemName: "stopwatch")
-                        Text("스톱워치")
-                    }
+                    .tabItem { Label("스톱워치",systemImage: "stopWatch")}
                 TimerView()
-                    .tabItem {
-                        Image(systemName: "timer")
-                        Text("타이머")
-                    }
+                    .tabItem {Label("타이머",systemImage: "timer")}
             }
             .tint(.orange)
         }

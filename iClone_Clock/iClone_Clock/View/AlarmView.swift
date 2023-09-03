@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct AlarmView: View {
+    
     var body: some View {
-        Text("alarm")
+        Text("this is alarm")
     }
 }
 

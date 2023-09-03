@@ -15,8 +15,8 @@
 		DE3019362A9EC2A900901B8A /* AlarmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3019352A9EC2A900901B8A /* AlarmView.swift */; };
 		DE3019392A9EC2F800901B8A /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3019382A9EC2F800901B8A /* StopWatchView.swift */; };
 		DE30193B2A9EC30700901B8A /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30193A2A9EC30700901B8A /* TimerView.swift */; };
-		DE30193E2A9F0B7C00901B8A /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30193D2A9F0B7C00901B8A /* WorldClockModel.swift */; };
 		DE3019402AA17CE000901B8A /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE30193F2AA17CE000901B8A /* MainView.swift */; };
+		DE3019422AA2A5E200901B8A /* WorldClockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3019412AA2A5E200901B8A /* WorldClockModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,8 +29,8 @@
 		DE3019352A9EC2A900901B8A /* AlarmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmView.swift; sourceTree = "<group>"; };
 		DE3019382A9EC2F800901B8A /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 		DE30193A2A9EC30700901B8A /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
-		DE30193D2A9F0B7C00901B8A /* WorldClockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldClockModel.swift; sourceTree = "<group>"; };
 		DE30193F2AA17CE000901B8A /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		DE3019412AA2A5E200901B8A /* WorldClockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WorldClockModel.swift; path = iClone_Clock/View/WorldClockModel.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,7 +96,7 @@
 		DE30193C2A9EF4DC00901B8A /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				DE30193D2A9F0B7C00901B8A /* WorldClockModel.swift */,
+				DE3019412AA2A5E200901B8A /* WorldClockModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,13 +171,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE30193E2A9F0B7C00901B8A /* WorldClockModel.swift in Sources */,
 				DE3019402AA17CE000901B8A /* MainView.swift in Sources */,
 				DE30193B2A9EC30700901B8A /* TimerView.swift in Sources */,
 				298079182A8CAE7B00D37113 /* ContentView.swift in Sources */,
 				DE3019392A9EC2F800901B8A /* StopWatchView.swift in Sources */,
 				DE3019342A9EC29300901B8A /* WorldClockView.swift in Sources */,
 				DE3019362A9EC2A900901B8A /* AlarmView.swift in Sources */,
+				DE3019422AA2A5E200901B8A /* WorldClockModel.swift in Sources */,
 				298079162A8CAE7B00D37113 /* iClone_ClockApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
