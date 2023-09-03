@@ -11,13 +11,7 @@ var dummyWorldTimeData = [
     WorldTime(city: "괌", timezoneOffset: +10 * 60 * 60),
     WorldTime(city: "뉴욕", timezoneOffset: -4 * 60 * 60),
     WorldTime(city: "런던", timezoneOffset: 0),
-    WorldTime(city: "모스크바", timezoneOffset: +3 * 60 * 60),
-    WorldTime(city: "벤쿠버", timezoneOffset: -7 * 60 * 60),
-    WorldTime(city: "베이징", timezoneOffset: +8 * 60 * 60),
-    WorldTime(city: "서울", timezoneOffset: +9 * 60 * 60),
-    WorldTime(city: "암스테르담", timezoneOffset: +2 * 60 * 60),
-    WorldTime(city: "파리", timezoneOffset: +1 * 60 * 60),
-    WorldTime(city: "하노이", timezoneOffset: +7 * 60 * 60),
+    WorldTime(city: "모스크바", timezoneOffset: +3 * 60 * 60)
 ]
 
 class WorldTimerObservable: ObservableObject {
@@ -38,8 +32,23 @@ class WorldTimerObservable: ObservableObject {
         getTimeZoneCityList()
     }
     
-    func removeItem(at offsets: IndexSet) {
+    func addWorldTime(_ newWorldTime: WorldTime) {
+        let renamedCityName = newWorldTime.city.split(separator: "/")
+        var copiedCity = newWorldTime
+        if let cityName = renamedCityName.last {
+            copiedCity.city = String(cityName)
+            timeZoneCityList.append(copiedCity)
+        } else {
+            timeZoneCityList.append(newWorldTime)
+        }
+    }
+    
+    func removeWorldTime(at offsets: IndexSet) {
         timeZoneCityList.remove(atOffsets: offsets)
+    }
+    
+    func reorderWorldTime(_ from: IndexSet,_ to: Int) {
+        timeZoneCityList.move(fromOffsets: from, toOffset: to)
     }
     
     private func getMeridiem(_ timeZoneOffset: Int) -> String {
@@ -53,13 +62,12 @@ class WorldTimerObservable: ObservableObject {
     
     private func getTimeMinute(_ timeZoneOffset: Int) -> String {
         let currentTime = Date()
-        let _ = TimeZone(secondsFromGMT: timeZoneOffset)
         dateFormmater.dateFormat = "h:mm"
         
         return dateFormmater.string(from: currentTime)
     }
     
-    func getTimeZoneCityList(){
+    private func getTimeZoneCityList(){
         let knownTimeZoneIdentifiers = TimeZone.knownTimeZoneIdentifiers
         for tz in knownTimeZoneIdentifiers {
             let timeZone = TimeZone(identifier: tz)

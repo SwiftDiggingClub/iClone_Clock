@@ -21,29 +21,36 @@ struct WorldTimeView: View {
                             Text(city.city)
                                 .font(.system(size: 30, weight: .black))
                             Spacer()
-                            Text(city.meridiem ?? "")
-                            Text(city.timeMinute ?? "")
+                            
+                            if editMode != .active {
+                                Text(city.meridiem ?? "")
+                                    .font(.system(size: 20, weight: .medium))
+                                    .padding(.top, 15)
+                                Text(city.timeMinute ?? "")
+                                    .font(.system(size: 40, weight: .bold))
+                            }
                         }
                         .padding(.vertical, 10)
                     }
-                    .onDelete(perform: worldTimerObservable.removeItem)
+                    .onDelete(perform: worldTimerObservable.removeWorldTime)
+                    .onMove { from, to in
+                        worldTimerObservable.reorderWorldTime(from, to)
+                    }
                 }
                 .listStyle(.grouped)
             }
             .navigationBarItems(leading: EditButton(), trailing: TrailingButton)
         }
-        .tint(.green)
-        .foregroundColor(.green)
         .scrollContentBackground(.hidden)
         .environment(\.editMode, $editMode)
         .sheet(isPresented: $isAddMode) {
             List {
-                ForEach(worldTimerObservable.allCityList) { time in
+                ForEach(worldTimerObservable.allCityList) { city in
                     Button {
-//                        worldTimerObservable.worldCityTimeList.append(time)
+                        worldTimerObservable.addWorldTime(city)
                         isAddMode = false
                     } label: {
-                        Text(time.city)
+                        Text(city.city)
                     }
                 }
             }

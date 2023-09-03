@@ -27,8 +27,6 @@ struct ContentView: View {
                     Label("타이머", systemImage: "timer")
                 }
         }
-        
-        .tint(.green)
     }
 }
 
