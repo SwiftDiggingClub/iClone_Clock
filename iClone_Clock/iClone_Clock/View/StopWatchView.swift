@@ -7,19 +7,26 @@
 
 import SwiftUI
 
-struct LabTime: Hashable {
-    let lapCount: Int
-    let lapTime: String
-}
+
 
 struct StopWatchView: View {
     @ObservedObject private var stopWatchObservable = StopWatchObservable()
+    
     var body: some View {
         VStack {
             VStack {
                 Spacer()
-                Text("0\(stopWatchObservable.minute):0\(stopWatchObservable.second):0\(stopWatchObservable.milliSecond)")
-                    .font(.system(size: 80, weight: .light))
+                HStack {
+                    Text("\(stopWatchObservable.minute)")
+                        .frame(width: 100)
+                    Text(":")
+                    Text("\(stopWatchObservable.second)")
+                        .frame(width: 100)
+                    Text(":")
+                    Text("\(stopWatchObservable.milliSecond)")
+                        .frame(width: 100)
+                }
+                .font(.system(size: 80, weight: .light))
                 Spacer()
             }
             .frame(height: 400)
@@ -31,7 +38,7 @@ struct StopWatchView: View {
                 }
                 Spacer()
                 Button {
-                    
+                    stopCounting()
                 } label: {
                     Text("시작")
                 }
@@ -43,6 +50,9 @@ struct StopWatchView: View {
         }
         .foregroundColor(.white)
         .background(.black)
+        .onReceive(stopWatchObservable.timer) { result in
+            stopWatchObservable.startCounting()
+        }
     }
 }
 

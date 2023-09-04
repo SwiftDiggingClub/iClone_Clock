@@ -13,5 +13,18 @@ class StopWatchObservable: ObservableObject {
     @Published var second  = 0
     @Published var milliSecond = 0
     @Published var lapTimeList: [LabTime] = []
+    @Published private var timeCount: Double = 0.0
     
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    
+ 
+    func startCounting(){
+        timeCount += 0.1
+        minute = Int((timeCount/60).truncatingRemainder(dividingBy: 60))
+        second = Int(timeCount.truncatingRemainder(dividingBy: 60))
+        milliSecond = Int((timeCount*10).truncatingRemainder(dividingBy: 10))
+    }
+    func stopCounting(){
+        timer.upstream.connect().cancel()
+    }
 }
