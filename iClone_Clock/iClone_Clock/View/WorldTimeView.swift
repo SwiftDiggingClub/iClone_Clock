@@ -55,6 +55,7 @@ struct WorldTimeView: View {
                 }
             }
             .listStyle(.plain)
+            
         }
     }
     
