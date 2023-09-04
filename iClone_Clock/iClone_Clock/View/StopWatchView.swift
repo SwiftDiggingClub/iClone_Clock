@@ -8,9 +8,9 @@
 import SwiftUI
 
 
-
 struct StopWatchView: View {
     @ObservedObject private var stopWatchObservable = StopWatchObservable()
+    @State private var isCounting = true
     
     var body: some View {
         VStack {
@@ -31,16 +31,32 @@ struct StopWatchView: View {
             }
             .frame(height: 400)
             HStack {
-                Button {
-                    
-                } label: {
-                    Text("재설정")
-                }
-                Spacer()
-                Button {
-                    stopCounting()
-                } label: {
-                    Text("시작")
+                if isCounting {
+                    Button {
+                        
+                    } label: {
+                        Text("랩")
+                    }
+                    Spacer()
+                    Button {
+                        stopWatchObservable.stopCounting()
+                        isCounting = false
+                    } label: {
+                        Text("중단")
+                    }
+                } else {
+                    Button {
+                        stopWatchObservable.resetStopWatch()
+                    } label: {
+                        Text("재설정")
+                    }
+                    Spacer()
+                    Button {
+                        stopWatchObservable.setTimer()
+                        isCounting = true
+                    } label: {
+                        Text("시작")
+                    }
                 }
             }
             .padding()
