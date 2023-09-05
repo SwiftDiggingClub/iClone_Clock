@@ -35,27 +35,27 @@ struct StopWatchView: View {
                     Button {
                         stopWatchObservable.addLapTime()
                     } label: {
-                        Text("랩")
+                        StopWatchControlButton(buttonTest: "랩", bgColor: .white.opacity(0.2))
                     }
                     Spacer()
                     Button {
                         stopWatchObservable.stopCounting()
                         isCounting = false
                     } label: {
-                        Text("중단")
+                        StopWatchControlButton(buttonTest: "중단", bgColor: .red.opacity(0.4), textColor: .red)
                     }
                 } else {
                     Button {
                         stopWatchObservable.resetStopWatch()
                     } label: {
-                        Text("재설정")
+                        StopWatchControlButton(buttonTest: "재설정", bgColor: .white.opacity(0.2))
                     }
                     Spacer()
                     Button {
                         stopWatchObservable.setTimer()
                         isCounting = true
                     } label: {
-                        Text("시작")
+                        StopWatchControlButton(buttonTest: "시작", bgColor: .green.opacity(0.3), textColor: .green)
                     }
                 }
             }
