@@ -61,7 +61,13 @@ struct StopWatchView: View {
             }
             .padding()
             ScrollView {
-            
+                ForEach(stopWatchObservable.lapTimeList, id: \.self) { lapTime in
+                    HStack {
+                        Text("랩\(lapTime.lapCount)")
+                        Spacer()
+                        Text("\(lapTime.minute):\(lapTime.second):\(lapTime.milliSecond)")
+                    }
+                }
             }
             Spacer()
         }
