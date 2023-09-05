@@ -33,7 +33,7 @@ struct StopWatchView: View {
             HStack {
                 if isCounting {
                     Button {
-                        
+                        stopWatchObservable.addLapTime()
                     } label: {
                         Text("랩")
                     }
@@ -61,6 +61,7 @@ struct StopWatchView: View {
             }
             .padding()
             ScrollView {
+            
             }
             Spacer()
         }

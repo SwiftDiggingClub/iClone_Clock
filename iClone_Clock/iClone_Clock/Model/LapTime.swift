@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct LabTime: Hashable {
+struct LapTime: Hashable {
     let lapCount: Int
-    let lapTime: String
+    let minute: Int
+    let second: Int
+    let milliSecond: Int
 }
