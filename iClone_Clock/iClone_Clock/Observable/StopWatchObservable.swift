@@ -14,13 +14,13 @@ class StopWatchObservable: ObservableObject {
     @Published var lapTimeList: [LapTime] = []
     @Published private var timeCount: Double = 0.0
     
-    var timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    var timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
  
     func startCounting(){
-        timeCount += 0.1
+        timeCount += 0.01
         minute = Int((timeCount/60).truncatingRemainder(dividingBy: 60))
         second = Int(timeCount.truncatingRemainder(dividingBy: 60))
-        milliSecond = Int((timeCount*10).truncatingRemainder(dividingBy: 10))
+        milliSecond = Int((timeCount*100).truncatingRemainder(dividingBy: 100))
     }
     
     func stopCounting(){
@@ -28,7 +28,7 @@ class StopWatchObservable: ObservableObject {
     }
     
     func setTimer(){
-        timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+        timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
     }
     
     func resetStopWatch(){

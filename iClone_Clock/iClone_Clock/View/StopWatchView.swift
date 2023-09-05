@@ -17,13 +17,13 @@ struct StopWatchView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Text("\(stopWatchObservable.minute)")
+                    Text("\(stopWatchObservable.minute < 10 ? "0" : "")\(stopWatchObservable.minute)")
                         .frame(width: 100)
                     Text(":")
-                    Text("\(stopWatchObservable.second)")
+                    Text("\(stopWatchObservable.second < 10 ? "0" : "")\(stopWatchObservable.second)")
                         .frame(width: 100)
                     Text(":")
-                    Text("\(stopWatchObservable.milliSecond)")
+                    Text("\(stopWatchObservable.milliSecond < 10 ? "0" : "")\(stopWatchObservable.milliSecond)")
                         .frame(width: 100)
                 }
                 .font(.system(size: 80, weight: .light))
