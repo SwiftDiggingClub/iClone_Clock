@@ -64,19 +64,26 @@ struct StopWatchView: View {
             }
             .padding()
             ScrollView {
-                HStack {
-                    Text("랩\(stopWatchObservable.lapTimeList.count + 1)")
-                    Spacer()
-                    Text("\(stopWatchObservable.lapMinute):\(stopWatchObservable.lapSecond):\(stopWatchObservable.lapMilliSecond)")
-                }
-                .padding()
-                ForEach(stopWatchObservable.lapTimeList.reversed(), id: \.self) { lapTime in
+                
+                VStack(spacing: 15) {
                     HStack {
-                        Text("랩\(lapTime.lapCount)")
+                        Text("랩\(stopWatchObservable.lapTimeList.count + 1)")
                         Spacer()
-                        Text("\(lapTime.minute):\(lapTime.second):\(lapTime.milliSecond)")
+                        Text("\(stopWatchObservable.lapMinute):\(stopWatchObservable.lapSecond):\(stopWatchObservable.lapMilliSecond)")
                     }
-                    .padding()
+                    Divider()
+                        .background(.white.opacity(0.3))
+                }
+                ForEach(stopWatchObservable.lapTimeList.reversed(), id: \.self) { lapTime in
+                    VStack(spacing: 15) {
+                        HStack {
+                            Text("랩\(lapTime.lapCount)")
+                            Spacer()
+                            Text("\(lapTime.minute):\(lapTime.second):\(lapTime.milliSecond)")
+                        }
+                        Divider()
+                            .background(.white.opacity(0.3))
+                    }
                     .foregroundColor(
                         stopWatchObservable.maxLapTime.lapCount == lapTime.lapCount ? .red :
                             stopWatchObservable.minLapTime.lapCount == lapTime.lapCount ? .green : .white
