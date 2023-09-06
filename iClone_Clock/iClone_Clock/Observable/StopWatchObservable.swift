@@ -31,9 +31,9 @@ class StopWatchObservable: ObservableObject {
         milliSecond = Int((timeCount*100).truncatingRemainder(dividingBy: 100))
         
         lapTimeCount += 0.01
-        lapMinute = Int((timeCount/60).truncatingRemainder(dividingBy: 60))
-        lapSecond = Int(timeCount.truncatingRemainder(dividingBy: 60))
-        lapMilliSecond = Int((timeCount*100).truncatingRemainder(dividingBy: 100))
+        lapMinute = Int((lapTimeCount/60).truncatingRemainder(dividingBy: 60))
+        lapSecond = Int(lapTimeCount.truncatingRemainder(dividingBy: 60))
+        lapMilliSecond = Int((lapTimeCount*100).truncatingRemainder(dividingBy: 100))
     }
     
     func stopCounting(){
@@ -49,10 +49,7 @@ class StopWatchObservable: ObservableObject {
         minute = 0
         second = 0
         milliSecond = 0
-        lapTimeCount = 0
-        lapMinute = 0
-        lapSecond = 0
-        lapMilliSecond = 0
+        resetCurrentLapTime()
     }
 }
 
@@ -60,25 +57,29 @@ extension StopWatchObservable {
     func addLapTime(){
         let newLapTime = LapTime(lapCount: lapTimeList.count + 1, minute: lapMinute, second: lapSecond, milliSecond: lapMilliSecond)
         lapTimeList.append(newLapTime)
+        resetCurrentLapTime()
+        ratingLapTime()
+    }
+    
+    func resetCurrentLapTime(){
         lapTimeCount = 0
         lapMinute = 0
         lapSecond = 0
         lapMilliSecond = 0
-        ratingLapTime()
     }
     
-    func resetLapTime(){
+    func resetLapTimeList(){
         lapTimeList.removeAll()
     }
     
     func ratingLapTime(){
-        if lapTimeList.count > 2 {
+        if lapTimeList.count > 1 {
             for lapTime in lapTimeList {
                 caculateLapTime(lapTime)
             }
         }
-        print(maxLapTime)
-        print(minLapTime)
+        print("max: \(maxLapTime.lapCount)")
+        print("min: \(minLapTime.lapCount)")
     }
     
     private func caculateLapTime(_ laptime: LapTime){

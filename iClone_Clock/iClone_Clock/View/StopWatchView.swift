@@ -49,7 +49,7 @@ struct StopWatchView: View {
                 } else {
                     Button {
                         stopWatchObservable.resetStopWatch()
-                        stopWatchObservable.resetLapTime()
+                        stopWatchObservable.resetLapTimeList()
                     } label: {
                         StopWatchControlButton(buttonTest: "재설정", bgColor: .white.opacity(0.2))
                     }
@@ -77,6 +77,10 @@ struct StopWatchView: View {
                         Text("\(lapTime.minute):\(lapTime.second):\(lapTime.milliSecond)")
                     }
                     .padding()
+                    .foregroundColor(
+                        stopWatchObservable.maxLapTime.lapCount == lapTime.lapCount ? .red :
+                            stopWatchObservable.minLapTime.lapCount == lapTime.lapCount ? .green : .white
+                    )
                 }
             }
             Spacer()
