@@ -15,6 +15,7 @@ struct StopwatchView: View {
     var body: some View {
         VStack(spacing: 0) {
             StopwatchTimerView(observable: observable)
+                .offset(y : -25)
                 .overlay(alignment: .bottom) {
                     HStack {
                         CircleButton(label: isStart ? "랩" : "재설정") {
@@ -44,9 +45,7 @@ struct StopwatchView: View {
                 .padding(.horizontal)
 
             
-            if isStart || !observable.laps.isEmpty {
-                LapListView(observable: observable)
-                    .scrollDisabled(false)
+            if isStart || observable.counter > 0 { LapListView(observable: observable)
             }
             Spacer()
         }

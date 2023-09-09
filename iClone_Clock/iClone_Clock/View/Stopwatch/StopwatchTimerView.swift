@@ -9,12 +9,12 @@ import SwiftUI
 
 struct StopwatchTimerView: View {
     
-    @ObservedObject var observable: StopwatchObserable
+    @StateObject var observable: StopwatchObserable
     
     var body: some View {
         TabView {
             DigitalTimer
-            Text("Timer Image")
+            ImageTimer
         }
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -23,9 +23,61 @@ struct StopwatchTimerView: View {
     
     @ViewBuilder
     var DigitalTimer: some View {
-        Text("\(observable.counter + observable.laps.reduce(0, +))")
-            .font(.largeTitle)
+        let timer = observable.counter + observable.laps.reduce(0, +)
+        
+        Text(observable.formattedTime(timer))
             .monospacedDigit()
+            .font(.system(size: 100))
+            .fontWeight(.thin)
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
+            .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    var ImageTimer: some View {
+        
+        let totalSeconds = Double((observable.counter + observable.laps.reduce(0, +)) / 100 % 60)
+        let seconds = Double(observable.counter / 100 % 60)
+        
+        ZStack {
+            Circle()
+                .foregroundColor(Color(.systemGray6))
+                .overlay {
+                    if observable.counter == 0 {
+                        Rectangle()
+                            .frame(width: 3)
+                            .rotationEffect(.degrees(totalSeconds * 6), anchor: .center)
+                            .foregroundColor(.orange)
+                            .animation(.linear(duration: 0.1), value: totalSeconds)
+                    }
+                }
+                .overlay {
+                    if 1...6000 ~= observable.counter {
+                        Rectangle()
+                            .frame(width: 3)
+                            .rotationEffect(.degrees(seconds * 6), anchor: .center)
+                            .foregroundColor(.blue)
+                            .animation(.linear(duration: 1), value: seconds)
+                    }
+                }
+                .overlay {
+                    if 1...6000 ~= observable.counter {
+                        Rectangle()
+                            .frame(width: 3)
+                            .rotationEffect(.degrees(totalSeconds * 6), anchor: .center)
+                            .foregroundColor(.orange)
+                            .animation(.linear(duration: 1), value: totalSeconds)
+                    }
+                }
+            Circle()
+                .frame(width: 12)
+                .foregroundColor(.orange)
+            Circle()
+                .frame(width: 6)
+                .foregroundColor(Color(UIColor.systemBackground))
+        }
+        .padding()
     }
 }
 
