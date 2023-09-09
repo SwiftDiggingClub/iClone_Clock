@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct StopwatchTimerView: View {
+    
+    @ObservedObject var observable: StopwatchObserable
+    
     var body: some View {
         TabView {
-            Text("Timer View")
+            DigitalTimer
             Text("Timer Image")
         }
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .always))
         .frame(height: UIScreen.main.bounds.height * 0.55)
     }
+    
+    @ViewBuilder
+    var DigitalTimer: some View {
+        Text("\(observable.counter + observable.laps.reduce(0, +))")
+            .font(.largeTitle)
+            .monospacedDigit()
+    }
 }
 
 struct StopwatchTimerView_Previews: PreviewProvider {
     static var previews: some View {
-        StopwatchTimerView()
+        StopwatchTimerView(observable: StopwatchObserable())
     }
 }

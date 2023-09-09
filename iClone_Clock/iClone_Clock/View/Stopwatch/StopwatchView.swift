@@ -9,33 +9,46 @@ import SwiftUI
 
 struct StopwatchView: View {
     
+    @StateObject var observable = StopwatchObserable()
     @State var isStart = false
     
     var body: some View {
         VStack(spacing: 0) {
-            StopwatchTimerView()
-            .overlay(alignment: .bottom) {
-                HStack {
-                    CircleButton(label: "랩") {
-                        
-                    }
-                    .foregroundColor(.primary)
-                    .disabled(!isStart)
-                    Spacer()
-                    CircleButton(label: isStart ? "중단" : "시작") {
-                        withAnimation() {
-                            isStart.toggle()
+            StopwatchTimerView(observable: observable)
+                .overlay(alignment: .bottom) {
+                    HStack {
+                        CircleButton(label: isStart ? "랩" : "재설정") {
+                            if isStart {
+                                observable.lapTimer()
+                            } else {
+                                observable.resetTimer()
+                            }
                         }
+                        .foregroundColor(.primary)
+                        Spacer()
+                        CircleButton(label: isStart ? "중단" : "시작") {
+                            isStart.toggle()
+                            if isStart {
+                                observable.startTimer()
+                            }
+                            else {
+                                observable.stopTimer()
+                            }
+                        }
+                        .foregroundColor(isStart ? .red : .green)
                     }
-                    .foregroundColor(isStart ? .red : .accentColor)
+                    .padding()
                 }
-                .padding()
-            }
             
             Divider()
                 .padding(.horizontal)
+
             
-            LapListView()
+            if isStart || !observable.laps.isEmpty {
+                LapListView(observable: observable)
+                    .scrollDisabled(false)
+            }
+            Spacer()
         }
     }
     
