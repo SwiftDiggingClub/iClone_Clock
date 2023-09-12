@@ -22,6 +22,13 @@ class StopWatchObservable: ObservableObject {
     @Published var lapMilliSecond = 0
     @Published private var lapTimeCount: Double = 0.0
     
+    var formatedLapTime: String {
+        String(format: "%02d:%02d:%02d", lapMinute, lapSecond, lapMilliSecond)
+    }
+    var formatedMainTime: String {
+        String(format: "%02d:%02d:%02d", minute, second, milliSecond)
+    }
+    
     var timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
  
     func startCounting(){
@@ -78,8 +85,6 @@ extension StopWatchObservable {
                 caculateLapTime(lapTime)
             }
         }
-        print("max: \(maxLapTime.lapCount)")
-        print("min: \(minLapTime.lapCount)")
     }
     
     private func caculateLapTime(_ laptime: LapTime){

@@ -16,16 +16,8 @@ struct StopWatchView: View {
         VStack {
             VStack {
                 Spacer()
-                HStack {
-                    Text("\(stopWatchObservable.minute < 10 ? "0" : "")\(stopWatchObservable.minute)")
-                        .frame(width: 100)
-                    Text(":")
-                    Text("\(stopWatchObservable.second < 10 ? "0" : "")\(stopWatchObservable.second)")
-                        .frame(width: 100)
-                    Text(":")
-                    Text("\(stopWatchObservable.milliSecond < 10 ? "0" : "")\(stopWatchObservable.milliSecond)")
-                        .frame(width: 100)
-                }
+                Text(stopWatchObservable.formatedMainTime)
+                .monospacedDigit()
                 .font(.system(size: 80, weight: .light))
                 Spacer()
             }
@@ -69,8 +61,10 @@ struct StopWatchView: View {
                     HStack {
                         Text("랩\(stopWatchObservable.lapTimeList.count + 1)")
                         Spacer()
-                        Text("\(stopWatchObservable.lapMinute):\(stopWatchObservable.lapSecond):\(stopWatchObservable.lapMilliSecond)")
+                        Text(stopWatchObservable.formatedLapTime)
+                            .monospacedDigit()
                     }
+                
                     Divider()
                         .background(.white.opacity(0.3))
                 }
@@ -79,8 +73,12 @@ struct StopWatchView: View {
                         HStack {
                             Text("랩\(lapTime.lapCount)")
                             Spacer()
+//                            Text("\(lapTime.minute)")
+//                            Text("\(lapTime.second < 10 ? "0" : "")\(lapTime.second)")
+//                            Text("\(lapTime.milliSecond < 10 ? "0" : "")\(lapTime.milliSecond)")
                             Text("\(lapTime.minute):\(lapTime.second):\(lapTime.milliSecond)")
                         }
+                        .monospacedDigit()
                         Divider()
                             .background(.white.opacity(0.3))
                     }
