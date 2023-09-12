@@ -73,10 +73,7 @@ struct StopWatchView: View {
                         HStack {
                             Text("랩\(lapTime.lapCount)")
                             Spacer()
-//                            Text("\(lapTime.minute)")
-//                            Text("\(lapTime.second < 10 ? "0" : "")\(lapTime.second)")
-//                            Text("\(lapTime.milliSecond < 10 ? "0" : "")\(lapTime.milliSecond)")
-                            Text("\(lapTime.minute):\(lapTime.second):\(lapTime.milliSecond)")
+                            Text(stopWatchObservable.getFormatedTime(minute: lapTime.minute, second: lapTime.second, milliSecond: lapTime.milliSecond))
                         }
                         .monospacedDigit()
                         Divider()

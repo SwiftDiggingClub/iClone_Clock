@@ -8,18 +8,18 @@
 import Foundation
 
 class StopWatchObservable: ObservableObject {
-    @Published var minute = 0
-    @Published var second  = 0
-    @Published var milliSecond = 0
+    @Published var minute: Int = 0
+    @Published var second: Int  = 0
+    @Published var milliSecond: Int = 0
     @Published var lapTimeList: [LapTime] = []
     
     @Published private var timeCount: Double = 0.0
     
     @Published var minLapTime = LapTime(lapCount: -1, minute: 99, second: 99, milliSecond: 99)
     @Published var maxLapTime = LapTime(lapCount: -1, minute: 0, second: 0, milliSecond: 0)
-    @Published var lapMinute = 0
-    @Published var lapSecond  = 0
-    @Published var lapMilliSecond = 0
+    @Published var lapMinute: Int = 0
+    @Published var lapSecond: Int  = 0
+    @Published var lapMilliSecond: Int = 0
     @Published private var lapTimeCount: Double = 0.0
     
     var formatedLapTime: String {
@@ -57,6 +57,10 @@ class StopWatchObservable: ObservableObject {
         second = 0
         milliSecond = 0
         resetCurrentLapTime()
+    }
+    
+    func getFormatedTime(minute: Int, second: Int, milliSecond: Int) -> String{
+        String(format: "%02d:%02d:%02d", minute, second, milliSecond)
     }
 }
 
