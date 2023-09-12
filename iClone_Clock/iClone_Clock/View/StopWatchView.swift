@@ -55,8 +55,8 @@ struct StopWatchView: View {
                 }
             }
             .padding()
+            
             ScrollView {
-                
                 VStack(spacing: 15) {
                     HStack {
                         Text("랩\(stopWatchObservable.lapTimeList.count + 1)")
