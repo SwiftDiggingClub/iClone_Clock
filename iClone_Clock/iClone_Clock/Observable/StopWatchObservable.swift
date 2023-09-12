@@ -5,6 +5,7 @@
 //  Created by Seungui Moon on 2023/09/04.
 //
 
+import Combine
 import Foundation
 
 class StopWatchObservable: ObservableObject {
@@ -22,14 +23,14 @@ class StopWatchObservable: ObservableObject {
     @Published var lapMilliSecond: Int = 0
     @Published private var lapTimeCount: Double = 0.0
     
+    private var timer: AnyCancellable?
+    
     var formatedLapTime: String {
         String(format: "%02d:%02d:%02d", lapMinute, lapSecond, lapMilliSecond)
     }
     var formatedMainTime: String {
         String(format: "%02d:%02d:%02d", minute, second, milliSecond)
     }
-    
-    var timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
  
     func startCounting(){
         timeCount += 0.01
@@ -44,11 +45,16 @@ class StopWatchObservable: ObservableObject {
     }
     
     func stopCounting(){
-        timer.upstream.connect().cancel()
+        timer?.cancel()
     }
     
     func setTimer(){
-        timer = Timer.publish(every: 0.01, on: .main, in: .common).autoconnect()
+        timer = Timer
+            .publish(every: 0.01, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.startCounting()
+            }
     }
     
     func resetStopWatch(){

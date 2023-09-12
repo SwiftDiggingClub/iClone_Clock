@@ -10,7 +10,7 @@ import SwiftUI
 
 struct StopWatchView: View {
     @ObservedObject private var stopWatchObservable = StopWatchObservable()
-    @State private var isCounting = true
+    @State private var isCounting = false
     
     var body: some View {
         VStack {
@@ -89,9 +89,6 @@ struct StopWatchView: View {
         }
         .foregroundColor(.white)
         .background(.black)
-        .onReceive(stopWatchObservable.timer) { result in
-            stopWatchObservable.startCounting()
-        }
     }
 }
 
