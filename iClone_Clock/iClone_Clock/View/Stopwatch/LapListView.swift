@@ -12,19 +12,15 @@ struct LapListView: View {
     @StateObject var observable: StopwatchObserable
     
     var body: some View {
-        
-        let lapsCount = observable.laps.count
-        let laps = observable.laps
-        
         List {
             HStack {
-                Text("랩 \(lapsCount + 1)")
+                Text("랩 \(observable.laps.count + 1)")
                 Spacer()
                 Text(observable.formattedTime(observable.counter))
                     .monospacedDigit()
             }
             if !observable.laps.isEmpty {
-                ForEach(laps.enumerated().reversed(), id: \.offset) { index, lap in
+                ForEach(observable.laps.enumerated().reversed(), id: \.offset) { index, lap in
                     HStack {
                         Text("랩 \(index + 1)")
                         Spacer()

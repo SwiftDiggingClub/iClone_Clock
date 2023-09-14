@@ -64,8 +64,6 @@ extension StopwatchObserable {
         let minLap = laps.min() ?? 0
         
         switch (lap == minLap, lap == maxLap) {
-        case (true, true):
-            return Color.primary
         case (_, true):
             return Color.red
         case (true, _):

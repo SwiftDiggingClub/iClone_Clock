@@ -53,7 +53,7 @@ struct StopwatchTimerView: View {
                     }
                 }
                 .overlay {
-                    if 1...6000 ~= observable.counter {
+                    if 1...(60 * 100) ~= observable.counter {
                         Rectangle()
                             .frame(width: 3)
                             .rotationEffect(.degrees(seconds * 6), anchor: .center)
@@ -62,7 +62,7 @@ struct StopwatchTimerView: View {
                     }
                 }
                 .overlay {
-                    if 1...6000 ~= observable.counter {
+                    if 1...(60 * 100) ~= observable.counter {
                         Rectangle()
                             .frame(width: 3)
                             .rotationEffect(.degrees(totalSeconds * 6), anchor: .center)
