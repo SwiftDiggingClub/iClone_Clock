@@ -8,8 +8,64 @@
 import SwiftUI
 
 struct StopwatchView: View {
+    
+    @StateObject var observable = StopwatchObserable()
+    @State var isStart = false
+    
     var body: some View {
-        Text("Here is Stopwatch")
+        VStack(spacing: 0) {
+            StopwatchTimerView(observable: observable)
+                .offset(y : -25)
+                .overlay(alignment: .bottom) {
+                    HStack {
+                        CircleButton(label: isStart ? "랩" : "재설정") {
+                            if isStart {
+                                observable.lapTimer()
+                            } else {
+                                observable.resetTimer()
+                            }
+                        }
+                        .foregroundColor(.primary)
+                        Spacer()
+                        CircleButton(label: isStart ? "중단" : "시작") {
+                            isStart.toggle()
+                            if isStart {
+                                observable.startTimer()
+                            }
+                            else {
+                                observable.stopTimer()
+                            }
+                        }
+                        .foregroundColor(isStart ? .red : .green)
+                    }
+                    .padding()
+                }
+            
+            Divider()
+                .padding(.horizontal)
+
+            
+            if isStart || observable.counter > 0 { LapListView(observable: observable)
+            }
+            Spacer()
+        }
+    }
+    
+    @ViewBuilder
+    private func CircleButton(label: String, action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            ZStack {
+                Text(label)
+                Circle()
+                    .frame(width: 70)
+                    .foregroundStyle(.quaternary)
+                Circle()
+                    .stroke(lineWidth: 3)
+                    .frame(width: 76)
+                    .foregroundStyle(.quaternary)
+            }
+        }
+        .buttonStyle(.plain)
     }
 }
 

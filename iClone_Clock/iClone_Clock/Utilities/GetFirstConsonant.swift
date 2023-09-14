@@ -11,7 +11,7 @@ let hangulConsonant = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","�
 
 /// 첫 모음을 가져오는 함수
 /// - Parameter word: 검색어
-/// - Returns: 해당 단어의 첫 모음
+/// - Returns: 해당 한글 단어의 첫 모음
 func getFirstConsonant(word: String) -> String {
     let unicode = word.unicodeScalars[word.unicodeScalars.startIndex].value
 
