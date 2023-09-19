@@ -11,9 +11,7 @@ import Foundation
 class StopWatchObservable: ObservableObject {
     @Published private var timeCount: Double = 0.0
     
-    @Published private var minute: Int = 0
-    @Published private var second: Int  = 0
-    @Published private var milliSecond: Int = 0
+    @Published private var timeModel = TimeModel(minute: 0, second: 0, milliSecond: 0)
     
     @Published private var lapMinute: Int = 0
     @Published private var lapSecond: Int  = 0
@@ -30,14 +28,15 @@ class StopWatchObservable: ObservableObject {
         String(format: "%02d:%02d:%02d", lapMinute, lapSecond, lapMilliSecond)
     }
     var formatedMainTime: String {
-        String(format: "%02d:%02d:%02d", minute, second, milliSecond)
+        String(format: "%02d:%02d:%02d", timeModel.minute, timeModel.second, timeModel.milliSecond)
     }
  
     func startCounting(){
         timeCount += 0.01
-        minute = Int((timeCount/60).truncatingRemainder(dividingBy: 60))
-        second = Int(timeCount.truncatingRemainder(dividingBy: 60))
-        milliSecond = Int((timeCount*100).truncatingRemainder(dividingBy: 100))
+        timeModel = TimeModel(
+            minute: Int((timeCount/60).truncatingRemainder(dividingBy: 60)),
+            second: Int(timeCount.truncatingRemainder(dividingBy: 60)),
+            milliSecond: Int((timeCount*100).truncatingRemainder(dividingBy: 100)))
         
         lapTimeCount += 0.01
         lapMinute = Int((lapTimeCount/60).truncatingRemainder(dividingBy: 60))
@@ -60,9 +59,7 @@ class StopWatchObservable: ObservableObject {
     
     func resetStopWatch(){
         timeCount = 0
-        minute = 0
-        second = 0
-        milliSecond = 0
+        timeModel = TimeModel(minute: 0, second: 0, milliSecond: 0)
         resetCurrentLapTime()
     }
     

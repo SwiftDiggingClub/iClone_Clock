@@ -13,3 +13,9 @@ struct LapTime: Hashable {
     let second: Int
     let milliSecond: Int
 }
+
+struct TimeModel {
+    let minute: Int
+    let second: Int
+    let milliSecond: Int
+}

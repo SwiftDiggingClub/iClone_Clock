@@ -11,14 +11,14 @@
 		298079182A8CAE7B00D37113 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 298079172A8CAE7B00D37113 /* ContentView.swift */; };
 		2980791A2A8CAE7D00D37113 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 298079192A8CAE7D00D37113 /* Assets.xcassets */; };
 		2980791D2A8CAE7D00D37113 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */; };
-		9554A6A42A94FDC900DF48E4 /* WorldTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9554A6A32A94FDC900DF48E4 /* WorldTime.swift */; };
+		9554A6A42A94FDC900DF48E4 /* WorldTimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9554A6A32A94FDC900DF48E4 /* WorldTimeModel.swift */; };
 		959862772A93AA180047E1D5 /* WorldTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959862762A93AA180047E1D5 /* WorldTimeView.swift */; };
 		959862792A93AA360047E1D5 /* WorldTimerObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959862782A93AA360047E1D5 /* WorldTimerObservable.swift */; };
 		9598627B2A93AB040047E1D5 /* AlermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598627A2A93AB040047E1D5 /* AlermView.swift */; };
 		9598627D2A93AB150047E1D5 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598627C2A93AB150047E1D5 /* StopWatchView.swift */; };
 		9598627F2A93AB250047E1D5 /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9598627E2A93AB250047E1D5 /* TimerView.swift */; };
 		95D609B82AA5BA6F005DCD1A /* StopWatchObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D609B72AA5BA6F005DCD1A /* StopWatchObservable.swift */; };
-		95D609BA2AA61DEB005DCD1A /* LapTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D609B92AA61DEB005DCD1A /* LapTime.swift */; };
+		95D609BA2AA61DEB005DCD1A /* StopWatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D609B92AA61DEB005DCD1A /* StopWatchModel.swift */; };
 		95D609BD2AA73991005DCD1A /* StopWatchControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D609BC2AA73991005DCD1A /* StopWatchControlButton.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,14 +28,14 @@
 		298079172A8CAE7B00D37113 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		298079192A8CAE7D00D37113 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2980791C2A8CAE7D00D37113 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9554A6A32A94FDC900DF48E4 /* WorldTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTime.swift; sourceTree = "<group>"; };
+		9554A6A32A94FDC900DF48E4 /* WorldTimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeModel.swift; sourceTree = "<group>"; };
 		959862762A93AA180047E1D5 /* WorldTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimeView.swift; sourceTree = "<group>"; };
 		959862782A93AA360047E1D5 /* WorldTimerObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorldTimerObservable.swift; sourceTree = "<group>"; };
 		9598627A2A93AB040047E1D5 /* AlermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlermView.swift; sourceTree = "<group>"; };
 		9598627C2A93AB150047E1D5 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
 		9598627E2A93AB250047E1D5 /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
 		95D609B72AA5BA6F005DCD1A /* StopWatchObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchObservable.swift; sourceTree = "<group>"; };
-		95D609B92AA61DEB005DCD1A /* LapTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LapTime.swift; sourceTree = "<group>"; };
+		95D609B92AA61DEB005DCD1A /* StopWatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchModel.swift; sourceTree = "<group>"; };
 		95D609BC2AA73991005DCD1A /* StopWatchControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchControlButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,8 +92,8 @@
 		9554A6A22A94FDAC00DF48E4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9554A6A32A94FDC900DF48E4 /* WorldTime.swift */,
-				95D609B92AA61DEB005DCD1A /* LapTime.swift */,
+				9554A6A32A94FDC900DF48E4 /* WorldTimeModel.swift */,
+				95D609B92AA61DEB005DCD1A /* StopWatchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -196,9 +196,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95D609BA2AA61DEB005DCD1A /* LapTime.swift in Sources */,
+				95D609BA2AA61DEB005DCD1A /* StopWatchModel.swift in Sources */,
 				9598627F2A93AB250047E1D5 /* TimerView.swift in Sources */,
-				9554A6A42A94FDC900DF48E4 /* WorldTime.swift in Sources */,
+				9554A6A42A94FDC900DF48E4 /* WorldTimeModel.swift in Sources */,
 				9598627D2A93AB150047E1D5 /* StopWatchView.swift in Sources */,
 				9598627B2A93AB040047E1D5 /* AlermView.swift in Sources */,
 				298079182A8CAE7B00D37113 /* ContentView.swift in Sources */,
