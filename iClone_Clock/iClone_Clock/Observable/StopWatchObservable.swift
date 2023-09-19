@@ -59,6 +59,8 @@ class StopWatchObservable: ObservableObject {
     func resetStopWatch(){
         timeCount = 0
         timeModel = TimeModel(minute: 0, second: 0, milliSecond: 0)
+        minLapTime = LapTime(lapCount: -1, minute: 99, second: 99, milliSecond: 99)
+        maxLapTime = LapTime(lapCount: -1, minute: 0, second: 0, milliSecond: 0)
         resetCurrentLapTime()
     }
     
@@ -93,10 +95,10 @@ extension StopWatchObservable {
     }
     
     private func caculateLapTime(_ laptime: LapTime){
-        if (laptime.minute, laptime.second, laptime.milliSecond) > (maxLapTime.minute, maxLapTime.second, maxLapTime.milliSecond) {
+        if (laptime.minute, laptime.second, laptime.milliSecond) >= (maxLapTime.minute, maxLapTime.second, maxLapTime.milliSecond) {
             maxLapTime = laptime
         }
-        else if (laptime.minute, laptime.second, laptime.milliSecond) < (minLapTime.minute, minLapTime.second, minLapTime.milliSecond) {
+        else if (laptime.minute, laptime.second, laptime.milliSecond) <= (minLapTime.minute, minLapTime.second, minLapTime.milliSecond) {
             minLapTime = laptime
         }
     }
