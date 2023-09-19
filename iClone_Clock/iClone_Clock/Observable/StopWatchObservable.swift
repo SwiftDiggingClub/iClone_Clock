@@ -9,14 +9,12 @@ import Combine
 import Foundation
 
 class StopWatchObservable: ObservableObject {
-    @Published private var timeCount: Double = 0.0
     
+    @Published private var timeCount: Double = 0.0
     @Published private var timeModel = TimeModel(minute: 0, second: 0, milliSecond: 0)
     
-    @Published private var lapMinute: Int = 0
-    @Published private var lapSecond: Int  = 0
-    @Published private var lapMilliSecond: Int = 0
     @Published private var lapTimeCount: Double = 0.0
+    @Published private var lapTimeModel = TimeModel(minute: 0, second: 0, milliSecond: 0)
     
     @Published var lapTimeList: [LapTime] = []
     @Published var minLapTime = LapTime(lapCount: -1, minute: 99, second: 99, milliSecond: 99)
@@ -25,7 +23,7 @@ class StopWatchObservable: ObservableObject {
     private var timer: AnyCancellable?
     
     var formatedLapTime: String {
-        String(format: "%02d:%02d:%02d", lapMinute, lapSecond, lapMilliSecond)
+        String(format: "%02d:%02d:%02d", lapTimeModel.minute, lapTimeModel.second, lapTimeModel.milliSecond)
     }
     var formatedMainTime: String {
         String(format: "%02d:%02d:%02d", timeModel.minute, timeModel.second, timeModel.milliSecond)
@@ -39,9 +37,10 @@ class StopWatchObservable: ObservableObject {
             milliSecond: Int((timeCount*100).truncatingRemainder(dividingBy: 100)))
         
         lapTimeCount += 0.01
-        lapMinute = Int((lapTimeCount/60).truncatingRemainder(dividingBy: 60))
-        lapSecond = Int(lapTimeCount.truncatingRemainder(dividingBy: 60))
-        lapMilliSecond = Int((lapTimeCount*100).truncatingRemainder(dividingBy: 100))
+        lapTimeModel = TimeModel(
+            minute: Int((lapTimeCount/60).truncatingRemainder(dividingBy: 60)),
+            second: Int(lapTimeCount.truncatingRemainder(dividingBy: 60)),
+            milliSecond: Int((lapTimeCount*100).truncatingRemainder(dividingBy: 100)))
     }
     
     func stopCounting(){
@@ -70,17 +69,15 @@ class StopWatchObservable: ObservableObject {
 
 extension StopWatchObservable {
     func addLapTime(){
-        let newLapTime = LapTime(lapCount: lapTimeList.count + 1, minute: lapMinute, second: lapSecond, milliSecond: lapMilliSecond)
+        let newLapTime = LapTime(lapCount: lapTimeList.count + 1, minute: lapTimeModel.minute, second: lapTimeModel.second, milliSecond: lapTimeModel.milliSecond)
         lapTimeList.append(newLapTime)
-        resetCurrentLapTime()
         ratingLapTime()
+        resetCurrentLapTime()
     }
     
     func resetCurrentLapTime(){
         lapTimeCount = 0
-        lapMinute = 0
-        lapSecond = 0
-        lapMilliSecond = 0
+        lapTimeModel = TimeModel(minute: 0, second: 0, milliSecond: 0)
     }
     
     func resetLapTimeList(){
@@ -96,9 +93,10 @@ extension StopWatchObservable {
     }
     
     private func caculateLapTime(_ laptime: LapTime){
-        if laptime.minute >= maxLapTime.minute  && laptime.second >= maxLapTime.second &&  laptime.milliSecond >= maxLapTime.milliSecond {
+        if (laptime.minute, laptime.second, laptime.milliSecond) > (maxLapTime.minute, maxLapTime.second, maxLapTime.milliSecond) {
             maxLapTime = laptime
-        } else if laptime.minute <= minLapTime.minute && laptime.second <= minLapTime.second && laptime.milliSecond <= minLapTime.milliSecond {
+        }
+        else if (laptime.minute, laptime.second, laptime.milliSecond) < (minLapTime.minute, minLapTime.second, minLapTime.milliSecond) {
             minLapTime = laptime
         }
     }
