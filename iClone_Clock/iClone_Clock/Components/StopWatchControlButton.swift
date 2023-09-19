@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct StopWatchControlButton: View {
+
     var buttonTest: String
     var bgColor: Color
     var textColor: Color = .white
+    
     var body: some View {
         ZStack {
             Circle()
